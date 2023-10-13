@@ -62,7 +62,7 @@ public class TestMyinfo extends Base {
 			this.myInfoPage.ClickMyinfomenu();
 			// String URL=Assert.assertEquals(driver.getCurrentUrl(),
 			// "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-			Thread.sleep(3002);
+			Thread.sleep(3003);
 			// driver.navigate().to(driver.getCurrentUrl());
 			// SystemThen.out.println("Page load started at : " + startTime.toString());
 
