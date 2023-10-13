@@ -62,13 +62,13 @@ public class TestMyinfo extends Base {
 			this.myInfoPage.ClickMyinfomenu();
 			// String URL=Assert.assertEquals(driver.getCurrentUrl(),
 			// "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
-			Thread.sleep(3003);
+			Thread.sleep(3005);
 			// driver.navigate().to(driver.getCurrentUrl());
 			// SystemThen.out.println("Page load started at : " + startTime.toString());
 
 			System.out.println("Navigating to the URL");
 			Instant endTime = Instant.now();
-			System.out.println("Page load ended at : " + endTime.toString());
+		System.out.println("Page load ended at : " + endTime.toString());
 
 			StopWatch pageLoad = new StopWatch();
 			pageLoad.start();
