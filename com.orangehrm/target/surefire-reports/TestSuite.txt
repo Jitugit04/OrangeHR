@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.568 s <<< FAILURE! - in TestSuite
+setUpClass(runners.TestRunnerOrangeHRM)  Time elapsed: 1.307 s  <<< FAILURE!
+java.lang.NoClassDefFoundError: io/cucumber/core/options/CucumberPropertiesProvider
+Caused by: java.lang.ClassNotFoundException: io.cucumber.core.options.CucumberPropertiesProvider
+

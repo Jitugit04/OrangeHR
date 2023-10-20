@@ -18,6 +18,8 @@ public class Loginpage {
 	private By ousername = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input");
 	private By opassword = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input");
 	private By LoginButton2 = By.xpath("//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
+	
+	
 
 	public void enterGUsername(String Username) {
 		driver.findElement(ousername).sendKeys(Username);

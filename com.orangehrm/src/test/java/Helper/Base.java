@@ -12,7 +12,7 @@ public class Base {
 	public static WebDriver driver;
 
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "D:\\Automation NIIT\\MSD Automation\\Config\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
