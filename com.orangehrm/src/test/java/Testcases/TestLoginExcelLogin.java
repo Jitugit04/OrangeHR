@@ -43,16 +43,17 @@ public class TestLoginExcelLogin extends Base {
 	*/
 	
 	@Then("Fill in the account details user {string} password {int} in the login screen.") 
-	public void fill_in_the_account_details_user_password_in_the_login_screen(String excelfilepath,String sheetName, Integer RowNumber) throws DataFormatException,IOException {
+	public void fill_in_the_account_details_user_password_in_the_login_screen(String sheetName, Integer RowNumber) throws DataFormatException,IOException {
 	    // Write code here that turns the phrase above into concrete actions
 	   
 	    ExcelRead read = new ExcelRead(driver);
-	  List<Map<String,String>> testData= read.getData("C:/Users/91950/Desktop/New XLS Worksheet.xls", sheetName);
-	    
-	 String Username= testData.get(RowNumber).get("Username");
-	 String Password= testData.get(RowNumber).get("Password");
-	 loginPage.enterGUsername(Username);
-	 loginPage.enterGPassword(Password);
+	  	List<Map<String,String>> testData= read.getData("New XLS Worksheet.xls", sheetName);
+		System.out.println("testData: " + testData);
+		String Username= testData.get(RowNumber).get("Username");
+		String Password= testData.get(RowNumber).get("Password");
+		System.out.println("Username: " + Username + ", Password: " + Password);
+		loginPage.enterGUsername(Username);
+		loginPage.enterGPassword(Password);
 	 
 	 
 	 

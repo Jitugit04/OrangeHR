@@ -3,10 +3,10 @@ package Helper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.zip.DataFormatException;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -40,46 +40,42 @@ public class ExcelRead {
 	public List<Map<String,String>> getData(String excelFilePath, String sheetName)throws DataFormatException,IOException
 	{
 		Sheet sheet=getSheetByName(excelFilePath,sheetName);
-				return readSheet(sheet);
+		return readSheet(sheet);
 		
 	}
 
 
 
 	public List<Map<String,String>> getData(String excelFilePath, int sheetNumber)throws DataFormatException,IOException
-			{
+	{
 		Sheet sheet=getSheetByIndex(excelFilePath,sheetNumber);
-						return readSheet(sheet);
-				
-			}
+		return readSheet(sheet);
+		
+	}
 
 
 	private List<Map<String, String>> readSheet(Sheet sheet) {
-		
-		
-		
-	Row row;
-	int totalRow= sheet.getPhysicalNumberOfRows();
-	List<Map<String,String>> excelRows=new ArrayList<Map<String,String>>();
-	int headerRowNumber=getHeaderRowNumber(sheet);
-	if(headerRowNumber !=-1) {
-		int totalColumn=sheet.getRow(headerRowNumber).getLastCellNum();
-		int setCurrentRow=1;
-		for(int CurrentRow=setCurrentRow; CurrentRow <= totalRow; CurrentRow++)
-		{
-	
-		row=getRow(sheet,sheet.getFirstRowNum()+ CurrentRow);
-		LinkedHashMap<String,String> ColunMapdata=new LinkedHashMap<String,String>();
-		
-		for(int CurrentColumn=0;CurrentColumn<totalColumn; CurrentColumn++ )
-		
-			ColunMapdata.putAll(getCellValue(sheet,row,CurrentColumn));
+		Row row;
+		int totalRow= sheet.getPhysicalNumberOfRows();
+		List<Map<String,String>> excelRows=new ArrayList<Map<String,String>>();
+		int headerRowNumber=getHeaderRowNumber(sheet);
+		if(headerRowNumber !=-1) {
+			Row headerRow = sheet.getRow(headerRowNumber);
+			int totalColumn=headerRow.getLastCellNum();
+			int setCurrentRow=1;
+			for(int CurrentRow=setCurrentRow; CurrentRow <= totalRow-1; CurrentRow++)
+			{
+				row = sheet.getRow(sheet.getFirstRowNum()+ CurrentRow);
+				System.out.println("row: " + row);
+				//LinkedHashMap<String,String> ColunMapdata=new LinkedHashMap<String,String>();
+				
+				Map<String, String> cellValueMap = getCellValue(headerRow, row, CurrentRow, totalColumn);
+				System.out.println("cellValueMap: " + cellValueMap);
+				excelRows.add(cellValueMap);
 			
-		
-	
-		}	
-	}
-	return excelRows;
+			}	
+		}
+		return excelRows;
 	}
 
 
@@ -90,9 +86,16 @@ public class ExcelRead {
 
 
 
-	private Map<? extends String, ? extends String> getCellValue(Sheet sheet, Row row, int currentColumn) {
+	private Map<String, String> getCellValue(Row headerRow, Row row, int currentColumn, int totalColumn) {
 		// TODO Auto-generated method stub
-		return null;
+		Map<String, String> cellValueMap = new HashMap<String, String>();
+		for(int CurrentColumn=0;CurrentColumn<totalColumn; CurrentColumn++ ) {
+			String cellValue = row.getCell(CurrentColumn).getStringCellValue();
+			String headerName = headerRow.getCell(CurrentColumn).getStringCellValue();
+			System.out.println("headerName: " + headerName + "cellValue: " + cellValue);
+			cellValueMap.put(headerName, cellValue);
+		}
+		return cellValueMap;
 	}
 
 

@@ -10,5 +10,5 @@ Feature:  Web Automation Login, fill info and logout
     
  Examples:
     |SheetName|RowNumber|
-    |New XLS Worksheet|0|
-    |New XLS Worksheet|1|
+    |Sheet1|0|
+    |Sheet1|1|
