@@ -10,17 +10,28 @@ import java.util.zip.DataFormatException;
 import Helper.Base;
 import Helper.ExcelRead;
 import PageObject.Loginpage;
+//import io.cucumber.core.gherkin.Scenario;
 import io.cucumber.java.After;
-//import helper.Base;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+//import org.junit.Assume
 
 public class TestLoginExcelLogin extends Base {
 
 	Loginpage loginPage;
 	//ExcelRead read;
 	//private loginPage loginpage=new loginPage(DriverFactory.getDriver())
+	/*
+	@Before(value ="@Skip", order=0)
+	public void skip_scenario(Scenario scenario)
+	{
+		System.out.print("SKIPPED SCENARIO :"+ scenario.getName());
+		//Assume.assumeTrue(false);
+		
+	}
+	*/
 
 	@Given("Open a new page in the browser.")
 	public void open_a_new_page_in_the_browser() {

@@ -9,10 +9,13 @@ import org.testng.annotations.DataProvider;
 //@RunWith(Cucumber.class)
 @io.cucumber.testng.CucumberOptions(
 
-		features = "src/test/resources/Features/",
-		// , tags=("@Browser,BrowserDOB")
+		features = "src/test/resources/Features/", tags="@Browser",
+		 //tags="not @Skip",//,tags=("@Browser,BrowserDOB")
 		glue = { "Testcases" }, plugin = { "pretty",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, monochrome = true
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+				"timeline:test-output-thread/"},//publish = true,
+		monochrome = true
+		
 
 )
 
